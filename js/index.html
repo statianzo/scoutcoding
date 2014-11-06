@@ -1,0 +1,90 @@
+<html>
+<head>
+  <title>JavaScript Sample</title>
+  <style>
+table {
+  width: 100%;
+}
+td {
+  text-align: center;
+}
+
+.health {
+  color: #333;
+    font-size: 1.8em;
+}
+
+  </style>
+</head>
+<body>
+  <h1>Battle</h1>
+  <table>
+    <tr>
+      <td>
+        <h2>Optimus Prime</h2>
+        <img src="prime.jpg" />
+        <div class="health" id="optimus-health"></div>
+      </td>
+      <td>
+        <h2>Megatron</h2>
+        <img src="mega.jpg" />
+        <div class="health" id="megatron-health"></div>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <button id="optimus-punch">Punch</button>
+      </td>
+      <td>
+        <button id="megatron-punch">Punch</button>
+      </td>
+    </tr>
+  </table>
+
+  <script>
+(function(){
+  var optimus = {
+    health: 1000
+  };
+
+  var megatron = {
+    health: 1000
+  };
+
+  function getDamage() {
+    return Math.random() * 70 + 30;
+  };
+
+  function updateStats() {
+    var optimusEl = document.getElementById("optimus-health");
+    optimusEl.innerText = optimus.health;
+
+    var megaEl = document.getElementById("megatron-health");
+    megaEl.innerText = megatron.health;
+
+    if (optimus.health <= 0) {
+      alert('Megatron wins')
+    }
+    else if (megatron.health <= 0) {
+      alert('Optimus Prime wins');
+    }
+  };
+
+  var punchEl = document.getElementById("optimus-punch");
+  punchEl.addEventListener('click', function(){
+    megatron.health = Math.ceil(megatron.health - getDamage());
+    updateStats();
+  });
+
+  var punchEl = document.getElementById("megatron-punch");
+  punchEl.addEventListener('click', function(){
+    optimus.health = Math.ceil(optimus.health - getDamage());
+    updateStats();
+  });
+
+  updateStats();
+}());
+
+  </script>
+</body>
+</html>
