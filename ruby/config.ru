@@ -1,9 +1,12 @@
 require File.expand_path('../vendor/bundle/bundler/setup', __FILE__)
 require 'sinatra'
 
-class Product < Struct.new(:name)
+# A Product represents an item in your grocery list
+
+class Product < Struct.new(:name, :price)
 end
 
+# An empty grocery list
 $products = []
 
 get '/' do
@@ -11,8 +14,16 @@ get '/' do
 end
 
 post '/groceries' do
-  name = params['product_name']
-  $products.push Product.new(name)
+  # Create a new product
+  prod = Product.new
+
+  # Read the name from the "product_name" input
+  prod.name = params['product_name']
+
+  # Add a new product to the grocery list
+  $products.push prod
+
+  # Go back to the homepage
   redirect to '/'
 end
 
