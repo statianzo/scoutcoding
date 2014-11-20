@@ -15,6 +15,19 @@ that character to punch his opponent.
 
 Create a heal button for optimus prime
 
+- Copy the "Punch" `<button>` from line 36
+
+- Change it's id to optimus-heal
+
+- Change the text inside the `<button>` from Punch to Heal
+
+- On line 73-77 there is a listener for 'click'
+  on the optimus-punch button. Copy that and change optimus-punch
+  to optumus-heal.
+
+- Instead of subtracting from megatron's health, add to optimus's health
+
+
 
 ### Bonus task
 
